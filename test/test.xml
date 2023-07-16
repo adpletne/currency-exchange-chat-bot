@@ -1,5 +1,5 @@
 <test>
-    <test-case id = communicative>
+    <test-case id = "communicative">
         <q>привет</q>
         <a>Доброго времени суток!</a>
         
@@ -13,7 +13,7 @@
         <a>Не понимаю, нужно повторить ещё раз.</a>
     </test-case>
     
-    <test-case id = exchangeRate>
+    <test-case id = "exchangeRate">
         <q>курс евро</q>
         <a>Я могу рассказать только о сегодняшнем курсе.</a>
         
