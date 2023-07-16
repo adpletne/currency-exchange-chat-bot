@@ -9,20 +9,20 @@ theme: /exchangeRate
                 $parseTree._todayAdv || 
                 $nlp.matchPatterns($request.query, ["* $todayAdv *"])
                 ) {
-                    if ($parseTree._currency === "евро" || $parseTree._currency === "доллар") {
-                        var query = $parseTree._currency;
-                        var url = "https://www.cbr-xml-daily.ru/";
+                    if ($parseTree._currency === "EUR" || $parseTree._currency === "USD") {
+                        var currency = $parseTree._currency;
+                        var url = "https://www.cbr-xml-daily.ru/daily_json.js";
                         var response = $http.get(url);
-                        $reactions.answer(response);
                         if (response.isOk) {
-                            var rate = 0;//response.data.current.temperature;
+                            // баг - невозможно достать из объекта нужное число
+                            var rate = response.data.Valute[currency].Value;
                         }
-                        $reactions.answer("Курс " + query + " сегодня - " + rate);
+                        $reactions.answer("Курс " + currency + " сегодня - " + rate + "руб.");
                     } else {
-                        $reactions.transition("/exchangeRate/ICanTellOnlyAboutDollarAndEuroRate");
+                        return $reactions.transition("/exchangeRate/ICanTellOnlyAboutDollarAndEuroRate");
                     }
                 } else {
-                    $reactions.transition("/exchangeRate/ICanTellOnlyAboutTodayExchangeRate");
+                    return $reactions.transition("/exchangeRate/ICanTellOnlyAboutTodayExchangeRate");
                 }
                 
             
