@@ -5,10 +5,10 @@ theme: /exchangeRate
         q!: * ~курс {[какой/кокой] [[на] $todayAdv]} [у/для] $currency *
         q!: * $currency {[какой/кокой] [[на] $todayAdv]} ~курс *
         script:
-            if (
-                $parseTree._todayAdv //|| 
-                $nlp.matchPatterns($request.query, ["* $todayAdv *"])
-                ) {
+            //if (
+                //$parseTree._todayAdv //|| 
+                //$nlp.matchPatterns($request.query, ["* $todayAdv *"])
+                //) {
                     //if ($parseTree._currency === "евро" || $parseTree._currency === "доллар") {
                         //var query = $parseTree.currency.value;
                         //var url = "https://www.cbr-xml-daily.ru/";
@@ -17,12 +17,12 @@ theme: /exchangeRate
                         //if (response.isOk) {
                             //var rate = 0;//response.data.current.temperature;
                         //}
-                    $reactions.answer("Курс " + query + " сегодня - " + rate);
+                    //$reactions.answer("Курс " + query + " сегодня - " + rate);
                     //}
-                    $reactions.transition("/exchangeRate/ICanTellOnlyAboutDollarAndEuroRate");
-                }
-                $reactions.transition("/exchangeRate/ICanTellOnlyAboutTodayExchangeRate");
-                }
+                    //$reactions.transition("/exchangeRate/ICanTellOnlyAboutDollarAndEuroRate");
+                //}
+                //$reactions.transition("/exchangeRate/ICanTellOnlyAboutTodayExchangeRate");
+                //}
                 
             
     state: ICanTellOnlyAboutTodayExchangeRate
