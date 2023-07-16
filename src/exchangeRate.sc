@@ -14,7 +14,7 @@ theme: /exchangeRate
                         var url = "https://www.cbr-xml-daily.ru/daily_json.js";
                         var response = $http.get(url);
                         if (response.isOk) {
-                            // баг - невозможно достать из объекта нужное число
+                            // баг - невозможно достать из объекта нужное значение (из самого JSON)
                             var rate = response.data.Valute[currency].Value;
                         }
                         $reactions.answer("Курс " + currency + " сегодня - " + rate + "руб.");
