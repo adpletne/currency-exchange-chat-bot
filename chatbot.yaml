@@ -1,4 +1,4 @@
-name: zb-cailapub
+name: currency-rate-bot
 
 entryPoint: main.sc
 
@@ -8,8 +8,3 @@ language: ru
 tests:
   include:
     - test.xml
-
-nlp:
-  intentNoMatchThresholds:
-    phrases: 0.2
-    patterns: 0.2

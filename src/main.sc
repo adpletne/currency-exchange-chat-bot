@@ -1,23 +1,10 @@
-require: slotfilling/slotFilling.sc
-  module = sys.zb-common
+require: communicative.sc
+require: exchangeRate.sc
+require: patterns.sc
+require: undef.sc
+    
 theme: /
 
     state: Start
-        q!: $regex</start>
-        a: Начнём.
-
-    state: Hello
-        intent!: /привет
-        a: Привет привет
-
-    state: Bye
-        intent!: /пока
-        a: Пока пока
-
-    state: NoMatch
-        event!: noMatch
-        a: Я не понял. Вы сказали: {{$request.query}}
-
-    state: Match
-        event!: match
-        a: {{$context.intent.answer}}
+        q!: start
+        a: Доброго времени суток! Я помогу узнать сегодняшний курс доллара и евро. Чем помочь?
