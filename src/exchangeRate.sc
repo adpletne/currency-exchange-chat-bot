@@ -17,8 +17,7 @@ theme: /exchangeRate
                             // из JSON надо удалить \n и \, для этого сделаем строку
                             var rates = JSON.stringify(response.data).
                                 replace(/(?:\\n)+/g, '').
-                                replace(/\\"/g, '"').
-                                replace(/"\\/g, '"');
+                                replace(/\\/g, '');
                             // приведем строку обратно в объект и достанем нужное значение
                             // NOTE: ошибка при парсинге
                             var rate = JSON.parse(rates).Valute[currency].Value;
