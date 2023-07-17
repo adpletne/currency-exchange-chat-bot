@@ -16,7 +16,7 @@ theme: /exchangeRate
                         if (response.isOk) {
                             // из JSON надо удалить \n и \, для этого сделаем строку
                             var rates = JSON.stringify(response.data).
-                                replace(/(?:\\[rn])+/g, '').
+                                replace(/(?:\\n)+/g, '').
                                 replace(/\\"/g, '"').
                                 replace(/"\\/g, '"');
                             // приведем строку обратно в объект и достанем нужное значение
