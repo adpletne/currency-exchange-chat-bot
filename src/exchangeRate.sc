@@ -14,11 +14,13 @@ theme: /exchangeRate
                         var url = "https://www.cbr-xml-daily.ru/daily_json.js";
                         var response = $http.get(url);
                         if (response.isOk) {
+                            // из JSON надо удалить \n и \, для этого сделаем строку
                             var rates = JSON.stringify(response.data).
                                 replace(/(?:\\[rn])+/g, '').
-                                //replace(/\\+/g, '').
-                                //replace(/\/+/g, '');
-                            // баг - невозможно достать из объекта нужное значение (из самого JSON)
+                                replace(/\\"/g, '"').
+                                replace(/"\\/g, '"');
+                            // приведем строку обратно в объект и достанем нужное значение
+                            // NOTE: ошибка при парсинге
                             var rate = JSON.parse(rates).Valute[currency].Value;
                         }
                         $reactions.answer("Курс " + currency + " сегодня - " + rate + "руб.");
